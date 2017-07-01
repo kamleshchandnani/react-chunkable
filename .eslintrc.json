@@ -78,7 +78,12 @@
       "always"
     ],
     "react/forbid-prop-types": [
-      1
+      1,
+      {
+        "forbid": [
+          "any"
+        ]
+      }
     ],
     "import/prefer-default-export": [
       1
