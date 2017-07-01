@@ -1,0 +1,9 @@
+{
+  "swFile": "public/service-worker.js",
+  "staticFileGlobs": [
+    "public/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff}"
+  ],
+  "maximumFileSizeToCacheInBytes": 5242880,
+  "stripPrefix": "public/",
+  "handleFetch": true
+}
