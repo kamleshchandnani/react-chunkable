@@ -1,9 +1,17 @@
 {
-  "swFile": "public/service-worker.js",
-  "staticFileGlobs": [
-    "public/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff}"
-  ],
+  "swFile": "public/build/service-worker.js",
+  "importScripts": ["./sw-helpers/service-worker-custom.js"],
+  "staticFileGlobs": ["public/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff}"],
   "maximumFileSizeToCacheInBytes": 5242880,
-  "stripPrefix": "public/",
-  "handleFetch": true
+  "stripPrefixMulti": {
+    "public/build/": "",
+    "public/": ""
+  },
+  "handleFetch": true,
+  "runtimeCaching": [
+    {
+      "urlPattern": "https://s3-ap-southeast-1.amazonaws.com/assets.bizom.in/pwa/img/menu-icons/*",
+      "handler": "cacheFirst"
+    }
+  ]
 }

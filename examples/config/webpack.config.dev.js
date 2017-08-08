@@ -1,8 +1,6 @@
 const webpack = require("webpack");
-const path = require("path");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+// const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 const baseConfig = require("./webpack.config.base");
 const paths = require("./paths");
@@ -11,13 +9,28 @@ const nodeEnv = process.env.NODE_ENV || "development";
 
 process.noDeprecation = true;
 
+const postCSSLoader = {
+  loader: "postcss-loader",
+  options: {
+    sourceMap: true,
+    plugins: (loader) => {
+      return [
+        require("postcss-import")({ root: loader.resourcePath }), // eslint-disable-line
+        require("postcss-cssnext")() // eslint-disable-line
+      ];
+    }
+  }
+};
 const plugins = [
   new ProgressBarPlugin(),
   new webpack.optimize.CommonsChunkPlugin({
     name: "vendor",
-    //if omitted default value is 3
+    // if omitted default value is 3
     minChunks: 2,
     filename: "vendor-commons.js"
+  }),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: ["runtime"]
   }),
   new webpack.optimize.CommonsChunkPlugin({
     async: true,
@@ -37,7 +50,7 @@ const plugins = [
   new webpack.HotModuleReplacementPlugin(),
   // If you require a missing module and then `npm install` it, you still have
   // to restart the development server for Webpack to discover it. This plugin
-  // makes the discovery automatic so you don"t have to restart.
+  // makes the discovery automatic so you don't have to restart.
   // new WatchMissingNodeModulesPlugin(paths.appNodeModules)
   new webpack.NamedModulesPlugin()
 ];
@@ -52,13 +65,13 @@ const appEntry = [
 
   // bundle the client for hot reloading
   // only- means to only hot reload for successful updates
-  // "webpack/hot/only-dev-server",
+  "webpack/hot/only-dev-server",
   // the entry point of our app
   paths.appIndexJs
 ];
 
 module.exports = {
-  devtool: "eval",
+  devtool: "source-map",
   context: baseConfig.context,
   entry: {
     bundle: appEntry,
@@ -72,28 +85,49 @@ module.exports = {
   },
   module: {
     rules: [
-      //eslint check
-      // {
-      //   enforce: "pre",
-      //   test: /\.(js|jsx)$/,
-      //   exclude: /node_modules/,
-      //   loader: "eslint-loader",
-      // },
-
+      // eslint check
+      {
+        enforce: "pre",
+        // test: /reducer.js/,
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader"
+      },
       // "postcss" loader applies autoprefixer to our CSS.
-      // "css" loader resolves paths in CSS and adds  as dependencies.
+      // "css" loader resolves paths in CSS and adds assets as dependencies.
       // "style" loader turns CSS into JS modules that inject <style> tags.
       // In production, we use a plugin to extract that CSS to a file, but
       // in development "style" loader enables hot editing of CSS.
-      //"!" is for chaining and the order goes right-left
+      // "!" is for chaining and the order goes right-left
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader?importLoaders=1", "postcss-loader"]
+        use: ["style-loader", "css-loader?importLoaders=1&sourceMap", postCSSLoader]
       },
       {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"]
+        use: [
+          "style-loader",
+          "css-loader?importLoaders=1&sourceMap",
+          postCSSLoader,
+          "sass-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true"
+        ]
       },
+      // {
+      //   test: /\.css$/,
+      //   loader: "style!css?importLoaders=1!postcss",
+      //   options: {
+      //     plugins: function () {
+      //       return [
+      //         require("precss"),
+      //         require("autoprefixer")
+      //       ];
+      //     }
+      //   }
+      // },
+      // {
+      //   test: /\.scss$/,
+      //   use: ["style-loader", "css-loader", "sass-loader"]
+      // },
       {
         test: /\.html$/,
         loader: "html-loader"
@@ -129,10 +163,11 @@ module.exports = {
   devServer: {
     contentBase: paths.appSrc,
     historyApiFallback: true,
-    port: 3000,
+    port: 3001,
     hot: true,
     // inline: true,
     compress: false,
     stats: { colors: true }
   }
 };
+// "start": "sw-precache --config=./config/sw-precache-config.json --verbose && webpack-dev-server --config ./config/webpack.config.dev.js",

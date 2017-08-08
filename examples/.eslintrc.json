@@ -25,6 +25,7 @@
     "eqeqeq": 0,
     "camelcase": 0,
     "one-var": 0,
+    "react/prefer-stateless-function": [0],
     "array-callback-return": [
       0
     ],

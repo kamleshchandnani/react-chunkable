@@ -49,9 +49,8 @@
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-jsx-a11y": "^5.0.1",
     "eslint-plugin-react": "^7.1.0",
-    "husky": "^0.14.3",
-    "webpack": "2.6.1",
-    "webpack-dev-server": "^2.4.1"
+    "react-hot-loader": "next",
+    "husky": "^0.14.3"
   },
   "scripts": {
     "start": "",

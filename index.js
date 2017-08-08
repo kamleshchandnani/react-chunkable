@@ -5,10 +5,10 @@ export default class ComponentChunk extends Component {
   static RenderComponent = null;
   state = { RenderComponent: ComponentChunk.RenderComponent };
   componentWillMount() {
-    const { chunk } = this.props;
+    const { loadChunk } = this.props;
     // Check if the component is not loaded already
     if (!this.state.RenderComponent) {
-      chunk.then(module => module.default).then((component) => {
+      loadChunk.then(module => module.default).then((component) => {
         ComponentChunk.RenderComponent = component;
         this.setState({ RenderComponent: component });
       });
@@ -25,7 +25,7 @@ export default class ComponentChunk extends Component {
 }
 
 ComponentChunk.propTypes = {
-  chunk: PropTypes.instanceOf(Promise).isRequired,
+  loadChunk: PropTypes.instanceOf(Promise).isRequired,
   componentProps: PropTypes.object
 };
 ComponentChunk.defaultProps = {

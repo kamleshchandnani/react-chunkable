@@ -15,8 +15,11 @@
 * import this class in our individual sagas and call the function addSagaToRoot and push all our action listeners
 * getRootSagaSaga is called from store file which activates all our listeners
 */
-import { all, flush, fork,take } from "redux-saga/effects";
+import { all, flush, fork, take } from "redux-saga/effects";
 import { channel } from "redux-saga";
+
+const TRUE = true;
+
 class SagasManager {
   constructor() {
     this.sagasWithArguments = channel();
@@ -24,24 +27,22 @@ class SagasManager {
 
   /**
    * Function to add our yielded sagas from individual saga files
-   * @param {array} sagaWithArguments array of yielded watchers 
-   * 
+   * @param {array} sagaWithArguments array of yielded watchers
+   *
    * @memberOf SagasManager
    */
   addSagaToRoot(...sagaWithArguments) {
     this.sagasWithArguments.put([...sagaWithArguments]);
   }
 
-
   /**
    * Function to activate root saga.
    * This function forks all the watchers and registers them in the root.
    * @returns rootSaga function which is registered in store
-   * 
+   *
    * @memberOf SagasManager
    */
   // getRootSaga() {
-
   //   const self = this;
   //   return function* rootSaga() {
   //     yield self.sagasWithArguments.map((sagaWithArguments) => fork(...sagaWithArguments));
@@ -52,14 +53,14 @@ class SagasManager {
     const sagasChannel = this.sagasWithArguments;
     return function* rootSaga() {
       const initialSagas = yield flush(sagasChannel);
-      yield all(initialSagas.map((initialSagaWithArguments) => fork(...initialSagaWithArguments)));
+      yield all(initialSagas.map(initialSagaWithArguments => fork(...initialSagaWithArguments)));
 
-      while (true) {
-        const dynamicSaga = yield take(sagasChannel)
-        yield fork(...dynamicSaga)
+      while (TRUE) {
+        const dynamicSaga = yield take(sagasChannel);
+        yield fork(...dynamicSaga);
       }
     };
   }
 }
 
-export default new SagasManager;
+export default new SagasManager();

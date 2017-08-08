@@ -11,12 +11,15 @@ module.exports = {
       "react-router-dom",
       "redux",
       "react-redux",
-      "redux-saga"
-    ]
+      "redux-saga",
+    ],
   },
   resolve: {
     extensions: [".js", ".jsx"],
-    modules: [paths.appSrc, "node_modules"],
+    modules: [
+      paths.appSrc,
+      "node_modules"
+    ],
     alias: {
       Components: path.resolve(paths.appSrc, "components/"),
       Constants: path.resolve(paths.appSrc, "constants/"),
