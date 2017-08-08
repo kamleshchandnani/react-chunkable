@@ -1,6 +1,6 @@
 {
   "name": "react-chunkable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "💥 Simplest way to code split and load async chunks using Webpack 2 and React Router V4",
   "homepage": "https://github.com/kamleshchandnani/react-chunkable#readme",
   "keywords": [
@@ -18,7 +18,9 @@
     "type": "git",
     "url": "https://github.com/kamleshchandnani/react-chunkable.git"
   },
-  "files": ["index.js"],
+  "files": [
+    "index.js"
+  ],
   "engines": {
     "npm": ">=3",
     "node": ">=5"
