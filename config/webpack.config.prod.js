@@ -14,7 +14,6 @@ const plugins = [
     "process.env": { NODE_ENV: JSON.stringify(nodeEnv) }
   }),
   new webpack.optimize.UglifyJsPlugin({
-    sourceMap: true,
     output: {
       comments: false
     },
