@@ -1,7 +1,6 @@
 import React, { PureComponent } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import ComponentChunk from "react-chunkable";
-import ComponentChunk from "./chunk";
+import ComponentChunk from "react-chunkable";
 
 const HomePage = props =>
   (<ComponentChunk

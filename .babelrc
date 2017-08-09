@@ -8,11 +8,5 @@
     ],
     "react",
     "stage-1"
-  ],
-  "plugins": [
-    "react-hot-loader/babel",
-    "transform-runtime",
-    "transform-object-rest-spread",
-    "transform-decorators-legacy"
   ]
 }
