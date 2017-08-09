@@ -18,15 +18,12 @@
     "type": "git",
     "url": "https://github.com/kamleshchandnani/react-chunkable.git"
   },
-  "files": [
-    "index.js",
-    "dist"
-  ],
+  "files": ["index.js", "dist"],
   "engines": {
     "npm": ">=3",
     "node": ">=5"
   },
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
   "author": "Kamlesh Chandnani",
   "license": "MIT",
   "dependencies": {
@@ -60,7 +57,7 @@
   },
   "scripts": {
     "start": "",
-    "build": "NODE_ENV=production webpack -p --display-error-details --config ./config/webpack.config.prod.js --progress --profile --colors",
+    "build": "webpack -p --display-error-details --config ./config/webpack.config.prod.js --progress --profile --colors",
     "precommit": "eslint ./index.js && eslint ./examples/*.js"
   }
 }

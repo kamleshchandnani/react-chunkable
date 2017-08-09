@@ -30,7 +30,7 @@ const nodePaths = (process.env.NODE_PATH || "")
 module.exports = {
   appRoot: resolveApp(""),
   appBuild: resolveApp("dist"),
-  appIndexJs: resolveApp("index.js"),
+  appIndexJs: resolveApp("./index.js"),
   appPackageJson: resolveApp("package.json"),
   appSrc: resolveApp(""),
   yarnLockFile: resolveApp("yarn.lock"),

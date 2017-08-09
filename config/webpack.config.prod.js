@@ -3,7 +3,7 @@ const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 const baseConfig = require("./webpack.config.base");
 const paths = require("./paths");
 
-const nodeEnv = process.env.NODE_ENV || "development";
+const nodeEnv = process.env.NODE_ENV || "production";
 
 process.noDeprecation = true;
 
@@ -13,8 +13,8 @@ const plugins = [
   new webpack.DefinePlugin({
     "process.env": { NODE_ENV: JSON.stringify(nodeEnv) }
   }),
-  new webpack.NamedModulesPlugin(),
   new webpack.optimize.UglifyJsPlugin({
+    sourceMap: true,
     output: {
       comments: false
     },
@@ -33,9 +33,7 @@ const plugins = [
       if_return: true,
       join_vars: true
     }
-  }),
-  new webpack.optimize.OccurrenceOrderPlugin(),
-  new webpack.optimize.AggressiveMergingPlugin()
+  })
 ];
 
 const appEntry = [
@@ -44,32 +42,21 @@ const appEntry = [
 ];
 
 module.exports = {
-  context: baseConfig.context,
   entry: {
     bundle: appEntry
   },
   output: {
     path: paths.appBuild,
     filename: "index.js",
-    publicPath: "/"
+    publicPath: "/",
+    libraryTarget: "umd"
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: [
-          "react-hot-loader/webpack",
-          {
-            loader: "babel-loader",
-            query: {
-              // This is a feature of `babel-loader` for webpack (not Babel itself).
-              // It enables caching results in ./node_modules/.cache/babel-loader/
-              // directory for faster rebuilds.
-              cacheDirectory: true
-            }
-          }
-        ]
+        use: "babel-loader"
       }
     ]
   },
