@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/kamleshchandnani/react-chunkable/blob/master/examples/src/logo/react-chunkable.png" />
+  <br>
+</p>
 # react-chunkable 🍕
 Simplest way to code split and load async chunks
 
