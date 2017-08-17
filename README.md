@@ -7,7 +7,7 @@
 Simplest way to code split and load async chunks
 
 ## Prerequisite
-`Webpack 2.x.x/3.x.x`
+`Webpack 2.x.x/3.x.x`  
 `React Router 4.x.x`
 
 ## Installation
