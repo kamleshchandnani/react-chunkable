@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="https://github.com/kamleshchandnani/react-chunkable/blob/master/examples/src/logo/react-chunkable.png" />
+  <br>
+</p>
+
 # Example of using react-chunkable
 ## Installation
 Download or clone the project and run the following command from the root directory
