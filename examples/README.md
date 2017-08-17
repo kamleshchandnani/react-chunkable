@@ -64,11 +64,14 @@ class Routes extends PureComponent {
 }
 
 ```
-`import(/*  webpackMode: "lazy",webpackChunkName: "profile" */ "./pages/profile")` this statement indicates webpack to consider this as a split point and load it in a separate bundle.
-Webpack 2.4.0 introduced one feature called "magic comments". Now you can name the chunks corresponding to the modules/components you import.
-`webpackMode: "lazy"` indicates webpack to lazily load this chunk
-`webpackChunkName: "profile"` allows you to name your chunk
+### Magic Comments
+Webpack 2.4.0 introduced one feature called "magic comments". Now you can name the chunks corresponding to the modules/components you import.  
+`import(/*  webpackMode: "lazy",webpackChunkName: "profile" */ "./pages/profile")` this statement indicates webpack to consider this as a split point and load it in a separate bundle.  
+
+`webpackMode: "lazy"` indicates webpack to lazily load this chunk.  
+`webpackChunkName: "profile"` allows you to name your chunk.  
 [More Info on other available options](https://webpack.js.org/api/module-methods/#import-)
+
 ## Production
 In the project directory, you can run:
 `yarn build`
