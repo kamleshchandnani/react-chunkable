@@ -10,6 +10,8 @@ Download or clone the project and run the following command from the root direct
 cd examples
 
 yarn
+
+yarn start
 ```
 ## Folder Structure
 
