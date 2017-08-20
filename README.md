@@ -11,13 +11,12 @@ Simplest way to code split and load async chunks
 `React Router 4.x.x`
 
 ## Installation
-Download or clone the project and run the following command from the root directory
 ```
-yarn
+yarn add react-chunkable
 ```
 or
 ```
-npm install
+npm install react-chunkable --save
 ```
 
 ## Usage
@@ -92,6 +91,9 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 ## Example
 Check out the [example applications](https://github.com/kamleshchandnani/react-chunkable/tree/master/examples) to see how simple this is.
+
+## SSR?
+Well, really do you need it? [Check this](https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/code-splitting.md)
 
 ## Support
 Please [open an issue](https://github.com/kamleshchandnani/react-chunkable/issues/new) for support.
