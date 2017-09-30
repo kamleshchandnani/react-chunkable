@@ -164,9 +164,9 @@ module.exports = {
     historyApiFallback: true,
     port: 3001,
     hot: true,
+    noInfo: true,
     // inline: true,
     compress: false,
     stats: { colors: true }
   }
 };
-// "start": "sw-precache --config=./config/sw-precache-config.json --verbose && webpack-dev-server --config ./config/webpack.config.dev.js",

@@ -3,6 +3,8 @@ const WebpackCleanupPlugin = require("webpack-cleanup-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
+const BundleSummary = require("webpack-bundle-summary");
+const DashboardPlugin = require("webpack-dashboard/plugin");
 const baseConfig = require("./webpack.config.base");
 const paths = require("./paths");
 
@@ -25,6 +27,8 @@ const postCSSLoader = {
 };
 const plugins = [
   // new BundleAnalyzerPlugin(),
+  new DashboardPlugin(),
+  new BundleSummary(),
   new ProgressBarPlugin(),
   new webpack.optimize.ModuleConcatenationPlugin(),
   new WebpackCleanupPlugin({

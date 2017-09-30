@@ -2,17 +2,14 @@ import React, { PureComponent } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ComponentChunk from "react-chunkable";
 
-const HomePage = props =>
-  (<ComponentChunk
-    componentProps={props}
-    loadChunk={import(/*  webpackMode: "lazy",webpackChunkName: "home" */ "./pages/home")}
-  />);
+const getChunk = chunkName =>
+  import(/*  webpackMode: "lazy", webpackChunkName: "[request]" */ `./pages/${chunkName}`);
 
-const ProfilePage = props =>
-  (<ComponentChunk
-    componentProps={props}
-    loadChunk={import(/*  webpackMode: "lazy",webpackChunkName: "profile" */ "./pages/profile")}
-  />);
+const HomePage = props => <ComponentChunk componentProps={props} loadChunk={getChunk("home")} />;
+
+const ProfilePage = props => (
+  <ComponentChunk componentProps={props} loadChunk={getChunk("profile")} />
+);
 
 class Routes extends PureComponent {
   render() {

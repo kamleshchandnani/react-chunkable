@@ -8,7 +8,8 @@ export default class ComponentChunk extends Component {
     const { loadChunk } = this.props;
     // Check if the component is not loaded already
     if (!this.state.RenderComponent) {
-      loadChunk.then(module => module.default).then((component) => {
+      loadChunk.then(module => module.default)
+      .then((component) => {
         ComponentChunk.RenderComponent = component;
         this.setState({ RenderComponent: component });
       });
