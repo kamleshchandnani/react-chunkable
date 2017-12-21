@@ -1,12 +1,22 @@
 {
-  "presets": [
-    [
-      "env",
-      {
-        "modules": false
-      }
-    ],
-    "react",
-    "stage-1"
-  ]
+  "env": {
+    "es": {
+      "presets": [
+        [
+          "kamlesh",
+          {
+            "targets": {
+              "browsers": ["last 2 Chrome versions", "safari >=11"]
+            },
+            "loose": false,
+            "modules": false,
+            "useBuiltIns": false
+          }
+        ]
+      ]
+    },
+    "cjs": {
+      "presets": [["kamlesh"]]
+    }
+  }
 }

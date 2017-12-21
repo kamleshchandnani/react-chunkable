@@ -48,7 +48,13 @@ module.exports = {
     path: paths.appBuild,
     filename: "index.js",
     publicPath: "/",
-    libraryTarget: "umd"
+    // library: "react-chunkable",
+    library: {
+      root: "react-chunkable-root",
+      amd: "react-chunkable-amd",
+      commonjs: "react-chunkable"
+    },
+    libraryTarget: "cjs"
   },
   module: {
     rules: [

@@ -1,8 +1,8 @@
 {
-  "$total": "506.3K",
-  "js/bundle.79e40ac4.js": "114.7K",
-  "js/home.d11d55d1.js": "46.2K",
-  "js/profile.59761aa5.js": "66.6K",
-  "js/runtime.b5ae610d.js": "1.5K",
-  "js/vendor.bundle-defc95a9.js": "277.2K"
+  "$total": "416.1K",
+  "js/bundle.842440fb.js": "342.9K",
+  "js/commonlazy.js-bundle.91e9b85f.js": "43.2K",
+  "js/home.c958c68d.js": "3.2K",
+  "js/profile.bcfca890.js": "25.3K",
+  "js/runtime.b257121d.js": "1.5K"
 }

@@ -57,7 +57,7 @@ export default class ProfileInputComponent extends Component {
         <Logo />
         <Input
           autoFocus="true"
-          placeholder="github username"
+          placeholder="github username kamlesh"
           onChange={this.onChange}
           onKeyUp={this.onKeyUp}
           onFocus={this.onFocus}

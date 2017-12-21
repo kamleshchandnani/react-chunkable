@@ -25,3 +25,14 @@ class Routes extends PureComponent {
 }
 
 export default Routes;
+
+/* By Sean Larkinn */
+// const getTheme = themeName => import(`./themes/${themeName}`);
+
+// if (window.somethingTellsmeINeedThemeA) {
+//   getTheme("a")
+//     .then(module => module.default)
+//     .then(() => {
+//       doWhateverYouNeed;
+//     });
+// }

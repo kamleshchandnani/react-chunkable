@@ -1,0 +1,4 @@
+{
+  "extends": "eslint-config-kamlesh",
+  "parser": "babel-eslint"
+}

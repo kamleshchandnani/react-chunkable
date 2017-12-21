@@ -7,6 +7,7 @@ const BundleSummary = require("webpack-bundle-summary");
 const DashboardPlugin = require("webpack-dashboard/plugin");
 const baseConfig = require("./webpack.config.base");
 const paths = require("./paths");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const devTools = "cheap-module-source-map";
 
@@ -26,7 +27,7 @@ const postCSSLoader = {
   }
 };
 const plugins = [
-  // new BundleAnalyzerPlugin(),
+  new BundleAnalyzerPlugin(),
   new DashboardPlugin(),
   new BundleSummary(),
   new ProgressBarPlugin(),
@@ -60,18 +61,19 @@ const plugins = [
     sourceMap:
       devTools && (devTools.indexOf("sourcemap") >= 0 || devTools.indexOf("source-map") >= 0)
   }),
-  new webpack.optimize.OccurrenceOrderPlugin(),
+  // new webpack.optimize.OccurrenceOrderPlugin(),
   // new webpack.optimize.AggressiveMergingPlugin(),
+  // new webpack.optimize.CommonsChunkPlugin({
+  //   name: "vendor",
+  //   // if omitted default value is 3
+  //   minChunks: Infinity,
+  //   filename: "js/vendor.bundle-[chunkhash:8].js"
+  // }),
   new webpack.optimize.CommonsChunkPlugin({
-    name: "vendor",
-    // if omitted default value is 3
-    minChunks: 3,
-    filename: "js/vendor.bundle-[chunkhash:8].js"
-  }),
-  new webpack.optimize.CommonsChunkPlugin({
-    async: true,
+    async: "commonlazy.js",
     children: true,
-    minChunks: 3
+    minChunks: 2
+    // filename: "js/commonlazy-[chunkhash:8].js"
   }),
   new webpack.optimize.CommonsChunkPlugin({
     name: "runtime"
@@ -116,8 +118,8 @@ module.exports = {
   devtool: devTools,
   context: baseConfig.context,
   entry: {
-    bundle: appEntry,
-    vendor: baseConfig.entry.vendor
+    bundle: appEntry
+    // vendor: baseConfig.entry.vendor
   },
   output: {
     path: paths.appBuild,
