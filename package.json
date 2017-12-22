@@ -1,7 +1,8 @@
 {
   "name": "react-chunkable",
   "version": "2.0.0",
-  "description": "💥 Simplest way to code split and load async chunks using Webpack 2 and React Router V4",
+  "description":
+    "💥 Simplest way to code split and load async chunks using Webpack 2 and React Router V4",
   "homepage": "https://github.com/kamleshchandnani/react-chunkable#readme",
   "keywords": [
     "react",
@@ -17,9 +18,7 @@
     "type": "git",
     "url": "https://github.com/kamleshchandnani/react-chunkable.git"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "engines": {
     "npm": ">=3",
     "node": ">=8"
@@ -54,9 +53,6 @@
     "lint-staged": "^6.0.0",
     "npm-run-all": "^4.1.2",
     "progress-bar-webpack-plugin": "^1.9.3",
-    "prop-types": "^15.6.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
     "react-hot-loader": "^3.0.0",
     "rollup": "^0.52.3",
     "rollup-plugin-babel": "^3.0.3",
@@ -68,6 +64,11 @@
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.4.1"
   },
+  "peerDependencies": {
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
   "scripts": {
     "clean": "rimraf dist",
     "build": "run-s clean && run-p build:es build:cjs",
@@ -76,8 +77,6 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint"
-    ]
+    "*.js": ["eslint"]
   }
 }
