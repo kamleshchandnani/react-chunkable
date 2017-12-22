@@ -1,8 +1,7 @@
 {
   "name": "react-chunkable",
-  "version": "2.0.0",
-  "description":
-    "💥 Simplest way to code split and load async chunks using Webpack 2 and React Router V4",
+  "version": "2.0.1",
+  "description": "💥 Simplest way to code split and load async chunks using Webpack 2 and React Router V4",
   "homepage": "https://github.com/kamleshchandnani/react-chunkable#readme",
   "keywords": [
     "react",
@@ -18,7 +17,9 @@
     "type": "git",
     "url": "https://github.com/kamleshchandnani/react-chunkable.git"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "engines": {
     "npm": ">=3",
     "node": ">=8"
@@ -77,6 +78,8 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": ["eslint"]
+    "*.js": [
+      "eslint"
+    ]
   }
 }
